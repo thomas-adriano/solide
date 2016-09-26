@@ -1,0 +1,22 @@
+@import "definitions";
+
+body {
+    background-color: $default-background-color;
+    color: rgb(97, 97, 97);
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+    font-size: 13px;
+    width: 100vw;
+    height: 100vh;
+}
+
+ul,
+ol {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
+
+li {
+    white-space: nowrap;
+    text-align: left;
+}

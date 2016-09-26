@@ -1,0 +1,15 @@
+//interactive normal items that have the same background-color as body element should have these below
+.btn {
+	background-color: $default-background-color;
+    display: flex;
+    border-radius: $default-border-radius;
+    cursor: pointer;
+    &:hover,
+    &:active {
+        background-color: rgba(0, 0, 0, 0.0470588);
+    }
+    &:active {
+        font-weight: bold;
+        color: rgb(33, 33, 33);
+    }
+}
