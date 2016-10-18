@@ -15,12 +15,17 @@ const commonPlugins = [
         }
     }),
     new HtmlWebpackPlugin({
-        template: 'assets/html/index-template.html'
+        filename: 'index.html',
+        template: 'assets/html/index-template.html',
+        hash: true,
     })
 ];
 
 const commonLoaders = [{
-    test: /\.sass$/,
+    test: /\.html$/,
+    loader: ["html"]
+},{
+    test: /\.scss$/,
     loader: ["style", "css", "sass", "postcss"]
 }, {
     test: /\.js$/,
@@ -28,13 +33,10 @@ const commonLoaders = [{
     loader: 'babel', // 'babel-loader' is also a valid name to reference
 }];
 
-const devLoaders = [{
-    test: /\.scss$/,
-    loaders: ["style", "css", "sass"]
-}];
+const devLoaders = [];
 
 const prodLoaders = [{
-    test: /\.sass$/,
+    test: /\.scss$/,
     loader: ExtractTextPlugin.extract(["css", "sass", "postcss"])
 }];
 
@@ -42,14 +44,18 @@ const plugins = commonPlugins;
 const loaders = commonLoaders.concat(devLoaders);
 
 module.exports = {
-    context: path.resolve(__dirname, 'src'),
-    entry: "./js/main",
+    context: __dirname,
+    entry: "./src/main",
     output: {
-        path: __dirname + "/dist",
+        path: path.resolve(__dirname, "dist"),
         filename: "bundle.js"
     },
     module: {
         loaders: loaders,
+    },
+    resolve: {
+        modules: [path.resolve(__dirname, "src"), path.resolve(__dirname, "node_modules")],
+        extensions: [".js", ".json"],
     },
     plugins: plugins,
 };
